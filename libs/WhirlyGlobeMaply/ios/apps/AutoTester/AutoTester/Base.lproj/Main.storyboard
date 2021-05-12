@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="SRb-BX-b9B">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tests-->
+        <scene sceneID="lDs-dQ-OUj">
+            <objects>
+                <tableViewController title="Tests" id="5uJ-67-qOs" customClass="StartupViewController" customModule="AutoTester" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="BxL-Pd-kqi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="sJ3-4N-fgV" customClass="TestCell" customModule="AutoTester" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sJ3-4N-fgV" id="Xq4-FD-5sH">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d18-Wn-lHX" userLabel="globeButton">
+                                            <rect key="frame" x="287" y="4" width="36" height="36"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="d18-Wn-lHX" secondAttribute="height" multiplier="1:1" id="DPc-Sv-nPJ"/>
+                                            </constraints>
+                                            <state key="normal" title="Button" image="globe.png"/>
+                                            <connections>
+                                                <action selector="runGlobeInteractiveTest:" destination="sJ3-4N-fgV" eventType="touchUpInside" id="z4W-8W-oVa"/>
+                                            </connections>
+                                        </button>
+                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jl7-me-c0V" userLabel="mapButton">
+                                            <rect key="frame" x="331" y="4" width="36" height="36"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="jl7-me-c0V" secondAttribute="height" multiplier="1:1" id="fik-LB-qcg"/>
+                                            </constraints>
+                                            <state key="normal" title="Button" image="map.png"/>
+                                            <connections>
+                                                <action selector="runMapInteractiveTest:" destination="sJ3-4N-fgV" eventType="touchUpInside" id="74o-bF-RdN"/>
+                                            </connections>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5aF-rw-GAm">
+                                            <rect key="frame" x="21" y="11.5" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="jl7-me-c0V" firstAttribute="height" secondItem="Xq4-FD-5sH" secondAttribute="height" constant="-8" id="BLV-zB-3mq"/>
+                                        <constraint firstItem="5aF-rw-GAm" firstAttribute="leading" secondItem="Xq4-FD-5sH" secondAttribute="leadingMargin" constant="5" id="Gqd-FH-PJQ"/>
+                                        <constraint firstItem="5aF-rw-GAm" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="d18-Wn-lHX" secondAttribute="leading" id="KwP-yW-2FX"/>
+                                        <constraint firstAttribute="trailing" secondItem="jl7-me-c0V" secondAttribute="trailing" constant="8" id="XGv-5I-PPg"/>
+                                        <constraint firstItem="d18-Wn-lHX" firstAttribute="height" secondItem="Xq4-FD-5sH" secondAttribute="height" constant="-8" id="fcD-pR-OcS"/>
+                                        <constraint firstItem="d18-Wn-lHX" firstAttribute="trailing" secondItem="jl7-me-c0V" secondAttribute="leading" constant="-8" id="gHx-vL-aph"/>
+                                        <constraint firstItem="d18-Wn-lHX" firstAttribute="centerY" secondItem="Xq4-FD-5sH" secondAttribute="centerY" id="hou-bK-Dpy"/>
+                                        <constraint firstItem="5aF-rw-GAm" firstAttribute="centerY" secondItem="Xq4-FD-5sH" secondAttribute="centerY" id="irh-2i-RRe"/>
+                                        <constraint firstItem="5aF-rw-GAm" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="jl7-me-c0V" secondAttribute="leading" id="toV-qh-Q06"/>
+                                        <constraint firstItem="jl7-me-c0V" firstAttribute="centerY" secondItem="Xq4-FD-5sH" secondAttribute="centerY" id="wLa-tV-U6I"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="globeButton" destination="d18-Wn-lHX" id="VQJ-W8-enI"/>
+                                    <outlet property="mapButton" destination="jl7-me-c0V" id="wRY-bZ-QKc"/>
+                                    <outlet property="testName" destination="5aF-rw-GAm" id="gsg-AB-h0T"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="5uJ-67-qOs" id="S1q-pe-ELr"/>
+                            <outlet property="delegate" destination="5uJ-67-qOs" id="dPD-sP-XTq"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Tests" id="cVr-ew-24e">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="iN4-BK-zpN"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="testsTable" destination="BxL-Pd-kqi" id="NPX-de-fAe"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UBZ-sj-XoW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="784" y="-252"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="YU2-em-mHo">
+            <objects>
+                <navigationController id="SRb-BX-b9B" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rpA-VJ-BSo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="5uJ-67-qOs" kind="relationship" relationship="rootViewController" id="nbR-rd-PPw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D77-QY-izr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-36" y="-252"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="globe.png" width="48" height="48"/>
+        <image name="map.png" width="48" height="48"/>
+    </resources>
+</document>

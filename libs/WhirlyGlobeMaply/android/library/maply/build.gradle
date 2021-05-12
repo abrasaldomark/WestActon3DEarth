@@ -1,0 +1,124 @@
+buildscript {
+    repositories {
+        jcenter()
+        google()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:4.1.0"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.10"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        google()
+    }
+}
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildTypes {
+            debug {
+                debuggable true
+                jniDebuggable true
+                ndk {
+                    abiFilters 'arm64-v8a', 'armeabi-v7a', 'x86', 'x86_64'
+                    debuggable true
+                }
+                externalNativeBuild {
+                    cmake {
+                        cppFlags "-g",              // enable debug info
+                            "-DDEBUG=1",            // Debug flags
+                            "-DCMAKE_BUILD_TYPE=Debug",
+                            "-O0",
+                            //"-O1",                  // Minimal optimize. (-Wuninitialized requires -O1)
+                                                    // Change to -O0 if you're having trouble debugging
+                            "-Wall", "-Wextra",     // warnings
+
+                            "-Wuninitialized",      // requires -O1 or above, but doesn't seem to work anyway
+                            "-Wmissing-field-initializers",
+                            "-Woverloaded-virtual",
+
+                            "-Wno-unused-parameter",
+                            "-Wno-unused-private-field",
+                            "-Wno-reorder",
+                            "-Wno-sign-compare",
+                            "-Wno-missing-braces",
+                            "-Wno-null-pointer-arithmetic"
+                    }
+                }
+            }
+            release {
+                debuggable false
+                jniDebuggable false
+                ndk {
+                    abiFilters 'arm64-v8a', 'armeabi-v7a', 'x86', 'x86_64'
+                    debuggable false
+                }
+                externalNativeBuild {
+                    cmake {
+                        cppFlags "-O2", "-DNDEBUG=1", "-DCMAKE_BUILD_TYPE=Release"
+                    }
+                }
+            }
+        }
+
+        externalNativeBuild {
+            cmake {
+                cppFlags "-frtti", "-fexceptions", "-std=gnu++14"
+            }
+        }
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+    ndkVersion '21.3.6528147'
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.14.9'
+    implementation 'androidx.core:core-ktx:+'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.4.10"
+    //implementation 'com.google.android.gms:play-services:12.0.1'
+    api 'com.google.android.gms:play-services-location:17.1.0'
+}
+repositories {
+    mavenCentral()
+}
